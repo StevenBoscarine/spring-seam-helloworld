@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:cdi="http://www.jboss.org/schema/seam/spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.jboss.org/schema/seam/spring http://www.jboss.org/schema/seam/spring/seam-spring.xsd">
+	<context:annotation-config />
+	<!-- Fails...never appears to be run. -->
+	<context:component-scan base-package="com.boscarine.example.spring.autowired" />
+	
+
+	<!-- JNDI DataSource for J2EE environments -->
+<!-- 	<jee:jndi-lookup id="dataSource" jndi-name="drm-data_source" -->
+<!-- 		expected-type="javax.sql.DataSource" /> -->
+
+
+	<cdi:bean-manager />
+
+	<cdi:bean-reference id="cdiExample" type="com.boscarine.example.jee.CDIExample" />
+	
+	<bean id="source" class="java.lang.String">
+		<constructor-arg value="Spring" />
+	</bean>
+	<bean class="com.boscarine.example.spring.SimpleBean">
+		<constructor-arg ref="source"/>
+		<constructor-arg ref="cdiExample"/>
+	</bean>
+</beans>
