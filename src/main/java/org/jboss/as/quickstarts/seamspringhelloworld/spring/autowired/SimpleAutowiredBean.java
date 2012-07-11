@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * This is a simple bean, proving that we can use annotation-based Spring config from Spring 2.x+. Everything in this class can
+ * This is a simple bean, demonstrating that we can use annotation-based Spring config from Spring 2.x+. Everything in this class can
  * run in any Spring container.
  */
 @Component

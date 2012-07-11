@@ -7,9 +7,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Simple JPA Example. Represents Period Table Element.
- * 
- * @author sboscarine
+ * Simple JPA Example representing Period Table Element.
+ * <p>
+ * By creating a JPA entity with "hibernate.hbm2ddl.auto" set to "create-drop", Hibernate will create the table based on the
+ * class name and field names in the datasource if it doesn't exist yet.
+ * </p>
  */
 @Entity
 @XmlRootElement     // JAXB binding allows this class to be returned by JAX-RS

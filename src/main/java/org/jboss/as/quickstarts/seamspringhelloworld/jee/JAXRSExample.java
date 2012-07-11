@@ -7,28 +7,28 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-import org.jboss.as.quickstarts.seamspringhelloworld.jee.cdi.CDIExample;
+import org.jboss.as.quickstarts.seamspringhelloworld.spring.SimpleBean;
 
 /**
- * This is a simple example of how to inject both Spring and CDI into a Java EE resource.
- * @author sboscarine
- *
+ * This is a simple example of how to inject both Spring into a Java EE resource.
+ * <p>
+ * JAX-RS example, creates a simple REST service and calls a Spring bean.
+ * </p>
+ * <p>
+ * By default, the service below can be viewed at http://localhost:8080/seam-spring-helloworld/rest/webservice/elements
+ * </p>
  */
-@Path("/webservice")
+@Path("/periodicTable")
 @RequestScoped
 public class JAXRSExample {
-    @GET
-    @Path("/helloWorld")
-    public String simpleDiagnostics() {
-        return "Hello World";
-    }
 
     @GET
     @Path("/elements")
     public List<Element> showElements() {
-        return cdi.listAllPeriodicTableElements();
+        return springXML.listAllPeriodicTableElements();
     }
 
+    //The CDISpringBridge exposes this Spring bean as a CDI bean.
     @Inject
-    private CDIExample cdi;
+    private SimpleBean springXML;
 }

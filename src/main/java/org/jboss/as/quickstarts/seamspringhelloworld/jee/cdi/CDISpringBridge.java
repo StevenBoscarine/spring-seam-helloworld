@@ -14,13 +14,13 @@ import org.springframework.context.ApplicationContext;
  */
 @SuppressWarnings("unused")
 public class CDISpringBridge {
-    // Is this boilerplate?
+    //FIXME:  Why is this needed? Is this boilerplate?
     @Produces
     @Web
     @SpringContext
     private ApplicationContext context;
 
-    // For each bean we wish to inject into a CDI-managed resource, we do need a CDI producer method.
+    // For each bean we wish to inject into a CDI-managed resource, we need a CDI producer annotation.
     @Produces
     @SpringBean
     private SimpleAutowiredBean autowiredBean;
