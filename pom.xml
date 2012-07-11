@@ -19,6 +19,7 @@
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
+		<!-- RedHat supported dependencies. -->
 		<repository>
 			<id>redhat-supported</id>
 			<name>Red Hat's Commercial Maven Repository</name>
@@ -39,12 +40,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.jboss.tools.examples</groupId>
-	<artifactId>seam-spring-helloworld</artifactId>
+	<groupId>org.jboss.as.quickstarts</groupId>
+	<artifactId>helloworld-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Java EE 6 webapp project</name>
-	<description>A starter Java EE 6 webapp project for use on JBoss AS 7.1 / EAP 6, generated from the jboss-javaee6-webapp archetype</description>
+	<name>Java EE Spring Integration - Hello World Example</name>
+	<description>This example is designed to illustrate how to call Spring beans from Java EE and wire CDI beans inside Spring beans.</description>
 
 	<properties>
 		<!-- Explicitly declaring the source encoding eliminates the following 
@@ -65,13 +66,13 @@
 				for your project, such as Arquillian for testing) and the jboss-javaee-6.0-with-hibernate 
 				stack you can read this as the JBoss stack of the Java EE 6 APIs, with extras 
 				from the Hibernate family of projects) -->
-			<dependency>
-				<groupId>org.jboss.bom</groupId>
-				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
-				<version>1.0.0.M12-redhat-1</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.jboss.bom</groupId> -->
+<!-- 				<artifactId>jboss-javaee-6.0-with-tools</artifactId> -->
+<!-- 				<version>1.0.0.M12-redhat-1</version> -->
+<!-- 				<type>pom</type> -->
+<!-- 				<scope>import</scope> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.jboss.bom</groupId>
 				<artifactId>jboss-javaee-6.0-with-hibernate</artifactId>

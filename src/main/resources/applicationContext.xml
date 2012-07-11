@@ -8,25 +8,30 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.jboss.org/schema/seam/spring http://www.jboss.org/schema/seam/spring/seam-spring.xsd">
-	<context:annotation-config />
-	<!-- Fails...never appears to be run. -->
-	<context:component-scan base-package="com.boscarine.example.spring.autowired" />
-	
-
-	<!-- JNDI DataSource for J2EE environments -->
-<!-- 	<jee:jndi-lookup id="dataSource" jndi-name="drm-data_source" -->
-<!-- 		expected-type="javax.sql.DataSource" /> -->
 
 
 	<cdi:bean-manager />
+	<cdi:bean-reference id="cdiExample"
+		type="org.jboss.as.quickstarts.seamspringhelloworld.jee.cdi.CDIExample" />
 
-	<cdi:bean-reference id="cdiExample" type="com.boscarine.example.jee.CDIExample" />
-	
+	<!-- We're using this as a simple example of a dependency wired in via Spring. -->
 	<bean id="source" class="java.lang.String">
 		<constructor-arg value="Spring" />
 	</bean>
-	<bean class="com.boscarine.example.spring.SimpleBean">
-		<constructor-arg ref="source"/>
-		<constructor-arg ref="cdiExample"/>
+
+	<!-- Example of Spring 1.x wiring via XML -->
+	<bean class="org.jboss.as.quickstarts.seamspringhelloworld.spring.SimpleBean">
+		<!-- This should be familiar to Spring 1.x. Just demonstrating that we're 
+			wiring in a Spring dependency -->
+		<constructor-arg ref="source" />
+		<!-- Wiring in a CDI dependency here. -->
+		<constructor-arg ref="cdiExample" />
 	</bean>
+
+	<!-- Example of Spring dependency wired using 2.x annotations. -->
+	<!-- If you're going to use Spring, you should definitely consider using 
+		annotations over XML. -->
+	<context:annotation-config />
+	<context:component-scan
+		base-package="org.jboss.as.quickstarts.seamspringhelloworld.spring.autowired" />
 </beans>
